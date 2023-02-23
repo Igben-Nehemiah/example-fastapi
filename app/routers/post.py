@@ -27,7 +27,7 @@ def get_post(id: int, db: Session = Depends(get_db),
 
     return post
 
-@router.get("/", response_model=list[schemas.PostOut])
+@router.get("/", response_model=List[schemas.PostOut])
 def get_posts(db: Session = Depends(get_db), 
                             current_user = Depends(oauth2.get_current_user),
                             limit: int = 10,
