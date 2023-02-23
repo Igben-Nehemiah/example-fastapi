@@ -1,5 +1,6 @@
 from pydantic import BaseModel, EmailStr, conint
 from datetime import datetime
+from typing import Union
 
 class PostBase(BaseModel):
     title: str
@@ -58,7 +59,7 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
-    id: str | None
+    id: Union[str, None]
     
 
 class Vote(BaseModel):
