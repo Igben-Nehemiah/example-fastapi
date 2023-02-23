@@ -17,6 +17,17 @@ depends_on = None
 
 
 def upgrade():
+    # create table users
+    op.create_table(
+        'users',
+        sa.Column('id', sa.Integer(), nullable=False),
+        sa.Column('email', sa.String(), nullable=False),
+        sa.Column('password', sa.String(), nullable=False),
+        sa.Column('created_at', sa.TIMESTAMP(timezone=True), server_default=sa.func.now()),
+        sa.UniqueConstraint('email'),
+        sa.PrimaryKeyConstraint('id')
+    )
+    
     # create table posts
     op.create_table(
         'posts',
@@ -30,16 +41,7 @@ def upgrade():
         sa.PrimaryKeyConstraint('id')
     )
 
-    # create table users
-    op.create_table(
-        'users',
-        sa.Column('id', sa.Integer(), nullable=False),
-        sa.Column('email', sa.String(), nullable=False),
-        sa.Column('password', sa.String(), nullable=False),
-        sa.Column('created_at', sa.TIMESTAMP(timezone=True), server_default=sa.func.now()),
-        sa.UniqueConstraint('email'),
-        sa.PrimaryKeyConstraint('id')
-    )
+    
 
     # create table votes
     op.create_table(
