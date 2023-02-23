@@ -4,13 +4,13 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from app.models import Base
 from alembic import context
-from app.config import Settings
+from app.config import settings
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
 
-SQLALCHEMY_DATABASE_URL = f'postgresql://{Settings.database_username}:{Settings.database_password}@{Settings.database_hostname}:{Settings.database_port}/{Settings.database_name}'
+SQLALCHEMY_DATABASE_URL = f'postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}'
 
 config.set_main_option("sqlalchemy.url", SQLALCHEMY_DATABASE_URL)
 
