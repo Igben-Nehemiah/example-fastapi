@@ -9,6 +9,16 @@ on:
       - "main"
 jobs:
   job1:
+    env:
+      DATABASE_HOSTNAME: localhost
+      DATABASE_PORT: 5432
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: fastapi2
+      DATABASE_USERNAME: postgres
+      SECRET_KEY: ed9ee29291935961a369c5dac1d8fcdc40bd9936d954e049e51058e95565be04
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
+      SQLITE_DB: sqlite:///./fastapi.db
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
